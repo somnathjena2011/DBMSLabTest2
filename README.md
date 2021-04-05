@@ -8,4 +8,6 @@
 ### pip install pyyaml
 ### pip install flask_mysqldb
 ### pip install email_validator
-### change mysql_db and mysql_password inside app/app/db.yaml
+### change mysql_db, mysql_password and mysql_user inside app/app/db.yaml
+### cd app
+### flask run
