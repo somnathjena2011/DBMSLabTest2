@@ -1,0 +1,12 @@
+CREATE DATABASE demo;
+
+USE demo;
+
+CREATE TABLE user(
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(200) UNIQUE NOT NULL,
+    password VARCHAR(500) NOT NULL
+);
+
+DROP TABLE user;

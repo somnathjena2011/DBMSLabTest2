@@ -6,3 +6,6 @@
 ### pip install flask_bcrypt
 ### pip install flask_login
 ### pip install pyyaml
+### pip install flask_mysqldb
+### pip install email_validator
+### change mysql_db and mysql_password inside app/app/db.yaml
