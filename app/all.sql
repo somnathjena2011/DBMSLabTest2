@@ -1,6 +1,6 @@
-CREATE DATABASE demo;
+CREATE DATABASE labtest;
 
-USE demo;
+USE labtest;
 
 CREATE TABLE user(
     user_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -9,4 +9,36 @@ CREATE TABLE user(
     password VARCHAR(500) NOT NULL
 );
 
+CREATE TABLE room(
+    room_id INT AUTO_INCREMENT,
+    room_type VARCHAR(20),
+    charge DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY(room_id,room_type)
+);
+
+CREATE TABLE booking(
+    user_id INT,
+    room_id INT,
+    room_type VARCHAR(20),
+    from_date DATE NOT NULL,
+    to_date DATE NOT NULL,
+    booked BOOLEAN,
+    pending BOOLEAN,
+    cancelled BOOLEAN,
+    PRIMARY KEY(user_id, room_id, room_type),
+    FOREIGN KEY(user_id) REFERENCES user(user_id),
+    FOREIGN KEY(room_id, room_type) REFERENCES room(room_id,room_type)
+);
+
+INSERT INTO room(room_type,charge) VALUES('A',50000.00);
+INSERT INTO room(room_type,charge) VALUES('A',40000.00);
+INSERT INTO room(room_type,charge) VALUES('A',5000.00);
+INSERT INTO room(room_type,charge) VALUES('A',60000.00);
+INSERT INTO room(room_type,charge) VALUES('B',50000.00);
+INSERT INTO room(room_type,charge) VALUES('B',40000.00);
+INSERT INTO room(room_type,charge) VALUES('B',5000.00);
+INSERT INTO room(room_type,charge) VALUES('B',60000.00);
+
 DROP TABLE user;
+DROP TABLE room;
+DROP TABLE booking;

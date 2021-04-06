@@ -2,4 +2,16 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1>Home Page</h1>
+    {% for room in rooms %}
+    <div>Room ID: {{ room[0] }}</div>
+    <div>Room Type: {{ room[1] }}</div>
+    <div>Charge: {{ room[2] }}</div>
+    <div>
+        <form method="POST" action="{{ url_for('find',room_id=room[0]) }}">
+            <input type="date" name="from_date" placeholder="From Date">
+            <input type="date" name="to_date" placeholder="To Date">
+            <input type="submit" name="submit" value="Check Availability">
+        </form>
+    </div>
+    {% endfor %}
 {% endblock content %}

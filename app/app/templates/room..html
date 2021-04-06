@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>{{ isAvailable }}</h1>
+    <div>Room ID: room[0]</div>
+    <div>Room Type: room[1]</div>
+    <div>Charge: room[2]</div>
+    <!-- <a href="{{ url_for('update',post_id=post_id) }}">Update</a> -->
+    <form action="{{ url_for('delete',post_id=post_id) }}" method="POST">
+        <input type="submit" name="Book" value="Book">
+    </form>
+    {% endif %}
+{% endblock content %}

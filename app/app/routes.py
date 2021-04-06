@@ -6,7 +6,10 @@ from datetime import date
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html',title='Home')
+    cursor = mysql.connection.cursor()
+    res = cursor.execute("SELECT * FROM room;")
+    rooms = cursor.fetchall()
+    return render_template('home.html',title='Home',rooms=rooms)
 
 @app.route('/register',methods=['GET','POST'])
 def register():
@@ -79,3 +82,20 @@ def account():
         return render_template('account.html',title='Account')
     else:
         return redirect(url_for('login'))
+
+@app.route('/find/<int:room_id>',methods=['POST'])
+def find(room_id):
+    details = request.form
+    from_date = details['from_date']
+    to_date = details['to_date']
+
+    cursor = mysql.connection.cursor()
+    res = cursor.execute("SELECT R.room_id, R.room_type, R.charge FROM room R WHERE R.room_id={}\
+         AND R.room_id NOT IN (SELECT room_id FROM booking WHERE (to_date>='{}' AND to_date<='{}') OR\
+             (from_date>='{}' AND from_date<='{}'))"
+             .format(room_id,from_date,to_date,from_date,to_date))
+    room = cursor.fetchone()
+    isAvailable = False
+    if res>0:
+        isAvailable=True
+    return render_template('room.html',isAvailable=isAvailable,room=room)
