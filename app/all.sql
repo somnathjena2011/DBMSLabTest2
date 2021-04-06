@@ -17,15 +17,17 @@ CREATE TABLE room(
 );
 
 CREATE TABLE booking(
+    booking_id INT AUTO_INCREMENT,
     user_id INT,
     room_id INT,
     room_type VARCHAR(20),
     from_date DATE NOT NULL,
     to_date DATE NOT NULL,
-    booked BOOLEAN,
-    pending BOOLEAN,
-    cancelled BOOLEAN,
-    PRIMARY KEY(user_id, room_id, room_type),
+    booked BOOLEAN DEFAULT FALSE,
+    pending BOOLEAN DEFAULT FALSE,
+    people INT,
+    description VARCHAR(200),
+    PRIMARY KEY(booking_id, user_id, room_id, room_type),
     FOREIGN KEY(user_id) REFERENCES user(user_id),
     FOREIGN KEY(room_id, room_type) REFERENCES room(room_id,room_type)
 );

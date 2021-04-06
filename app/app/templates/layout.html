@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
         <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='main.css') }}">
         <title>
             {% if title %}
@@ -25,6 +17,7 @@
                 {% if 'loggedin' in session %}
                 <a href="{{ url_for('account') }}">Account</a>
                 <a href="{{ url_for('logout') }}">Logout</a>
+                <a href="{{ url_for('bookings') }}">My Bookings</a>
                 {% else %}
                 <a href="{{ url_for('login') }}">Login</a>
                 <a href="{{ url_for('register') }}">Register</a>

@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for book in books %}
+    <div>
+        <div>Room ID:{{ book[2] }}</div>
+        <div>Room Type:{{ book[3] }}</div>
+        <div>From date:{{ book[4] }}</div>
+        <div>To date:{{ book[5] }}</div>
+        {% if book[6]=='True' or book[6]=='TRUE' or book[6]==True or book[6]==1 or book[6]=='1' %}
+        <div>
+            <div>
+                <h3>Booked</h3>h3>
+            </div>
+            <div>
+                <form method="POST" action="{{ url_for('cancel',booking_id=book[0]) }}">
+                    <input type="submit" value="Cancel Booking" style="background-color: red;">
+                </form>
+            </div>
+        </div>
+        {% else %}
+        <div>
+            <h3>Pending</h3>h3>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+{% endblock content %}

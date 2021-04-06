@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+    <form action="{{ url_for('finish',room_id=room['room_id']) }}" method="POST">
+        Room ID:
+        <input type="number" name="room_id" value="{{ room['room_id'] }}" readonly>
+        Room Type:
+        <input type="text" name="room_type" value="{{ room['room_type'] }}" readonly>
+        Charge:
+        <input type="text" name="charge" value="{{ room['charge'] }}" readonly>
+        From Date:
+        <input type="date" name="from_date" value="{{ room['from_date'] }}" readonly>
+        Room ID:
+        <input type="date" name="to_date" value="{{ room['to_date'] }}" readonly>
+        <input type="number" min="1" max="5" name="people" placeholder="No of people">
+        <input type="text" name="description" placeholder="Description">
+        <input type="submit" name="Book" value="Confirm Booking OR Confirm to Wait">
+    </form>
+{% endblock content %}
