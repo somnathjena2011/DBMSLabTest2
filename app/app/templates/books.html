@@ -20,6 +20,11 @@
         {% else %}
         <div>
             <h3>Pending</h3>h3>
+            <div>
+                <form method="POST" action="{{ url_for('cancel',booking_id=book[0]) }}">
+                    <input type="submit" value="Cancel Booking" style="background-color: red;">
+                </form>
+            </div>
         </div>
         {% endif %}
     </div>
