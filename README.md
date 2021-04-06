@@ -9,5 +9,6 @@
 ### pip install flask_mysqldb
 ### pip install email_validator
 ### change mysql_db, mysql_password and mysql_user inside app/app/db.yaml
+### refer to all.sql inside app for creating all tables in mysql
 ### cd app
 ### flask run
